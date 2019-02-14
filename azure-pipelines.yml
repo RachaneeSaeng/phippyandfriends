@@ -12,10 +12,13 @@ trigger:
 
 variables:
   projectName: parrot
+  tenantId: ba962f1a-dad6-4180-8643-c6151f4aed67
+  registryName: http://azure-cli-2019-02-14-08-31-00
+  registryLogin: 8b15a296-5ed0-4144-a24e-7636670a4b3c
+  registryPassword: cdb0ca69-40e1-4faf-800e-bb5a58d89fbd
   registryServerName: '$(registryName).azurecr.io'
-  imageName: '$(projectName)'
+  imageName: '$(projectName)' 
   # define 4 more variables: tenantId, registryName, registryLogin and registryPassword in the build pipeline in UI
-
 
 steps:
 - bash: docker build -f $(system.defaultWorkingDirectory)/$(projectName)/Dockerfile -t $(registryServerName)/$(imageName):$(build.buildId) -t $(registryServerName)/$(imageName):latest $(system.defaultWorkingDirectory)/$(projectName)
